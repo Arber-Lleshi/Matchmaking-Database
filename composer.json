@@ -1,0 +1,21 @@
+{
+	"name":"MatchMaking/MatchMaking",
+	"type":"library",
+	"description":"Requirements and autoload for MatchMaking.local",
+	"license":"MIT",
+	"authors":[
+		{
+			"name":"Luis Vierroth",
+			"email":"derluis@me.com",
+			"role":"Developer"
+		}
+	],
+	"require":{
+		"php":">=7.1.23"
+	},
+	"autoload":{
+		"psr-4":{
+			"MatchMaking\\":"PHP/Library"
+		}
+	}
+}
