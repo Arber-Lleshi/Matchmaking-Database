@@ -1,0 +1,41 @@
+RewriteEngine On
+RewriteBase /
+
+ServerSignature Off
+Header unset X-Powered-By
+Header unset Last-Modified
+
+# disable directory browsing
+Options All -Indexes
+
+# prevent folder listing
+IndexIgnore *
+
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/json
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE image/svg+xml
+AddOutputFilterByType DEFLATE image/png
+AddOutputFilterByType DEFLATE application/pdf
+
+AddCharset utf-8 .html .css .svg .js
+
+ErrorDocument 404 /404.php
+
+# RewriteCond %{HTTPS} off [OR]
+# RewriteCond %{HTTP_HOST} ^www\.dingdong\.social [NC]
+# RewriteCond %{HTTP_HOST} !^$
+# RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_URI} !(/$)
+# RewriteRule (.*) %{REQUEST_URI}/ [R=301,L]
+
+# DirectoryIndex dashboard.php
+# RewriteRule ^account/([A-Za-z0-9-]{1,40}+)/?$ /account.php?prefix=$1 [NC]
+# RewriteRule ^event/([A-Za-z0-9-]{1,40}+)/?$ /event.php?prefix=$1 [NC]
+# RewriteRule ^activateAccount/(.*)/([A-Za-z0-9-]{40}+)/?$ /activateAccount.php?email=$1&activationCode=$2 [NC]
+
+RewriteRule ^test/?$ /test.php [NC]
